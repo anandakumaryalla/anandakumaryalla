@@ -1,0 +1,70 @@
+// .left-side {
+//     background-color: blue;
+// }
+
+.right-side {
+    margin-bottom: 5%;
+    background-color: #EEEEEE;
+}
+
+.mainRow {
+    margin-left: 5%;
+    margin-top: 4%;
+}
+
+.quoteBtn {
+    background-color: #F5A54C;
+}
+
+.moreData {
+    margin-left: 5%;
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+
+.seeMoreBtn {
+    border: 1px solid blue;
+    color: blue;
+    background-color: #EEEEEE;
+}
+
+.prevprice {
+    color: rgba(red, 0.5);
+    text-decoration: none;
+    position: relative;
+    &:before {
+      content: " ";
+      display: block;
+      width: 100%;
+      border-top: 2px solid rgba(red, 0.8);
+      height: 12px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: rotate(-7deg);
+    }
+}
+
+.finalprice {
+    color: green;
+    font-size: 32px;
+    text-decoration: none;
+}
+
+.bulletsBlock {
+    border: 1px solid grey;
+}
+
+.bulletHeadingBlock {
+    background-color: #00664F;
+}
+
+.bulletHeadingText {
+    color: white;
+}
+
+.nextPrev {
+    background-color: #F5A54C;
+    font-size: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,378 @@
+<div nz-row>
+    <!-- Products data displaying right side -->
+    <div class="right-side" nz-col [nzSpan]="18" [nzPush]="6">
+        <div nz-row class="mainRow">
+            <h3 style="color: #00664F;">Your Hybrid Electric Water Heater Recommended Optioins</h3>
+            <nz-divider></nz-divider>
+            <div nz-col *ngFor="let product of selectedProducts">
+                <nz-card style="width:350px; margin-left: 10%; margin-top: 5%;">
+                    <nz-row>
+                        <nz-col nzSpan="17">
+                            <nz-card-meta nzTitle="{{product.manufacturer_name}}" nzDescription="{{product.name}}"></nz-card-meta>
+                        </nz-col>
+                        <nz-col nzSpan="7">
+                            3.4 ef
+                            <img
+                                nz-image
+                                src="/assets/info-tooltip.svg"
+                                alt=""
+                            />
+                            <img
+                                nz-image
+                                src="/assets/Energy_Star_logo.svg.png"
+                                alt=""
+                                width="30px"
+                                height="30px"
+                            />
+                        </nz-col>
+                    </nz-row>
+                    <nz-divider></nz-divider>
+                    <nz-row>
+                        <nz-col nzSpan="12">
+                            <img
+                                *ngIf="product.manufacturer_name === 'Rheem'"
+                                nz-image
+                                src="/assets/img1.png"
+                                alt=""
+                                width="120px"
+                                height="300px"
+                            />
+                            <img
+                                *ngIf="product.manufacturer_name === 'A.O. Smith'"
+                                nz-image
+                                src="/assets/img2.png"
+                                alt=""
+                                width="120px"
+                                height="300px"
+                            />
+                            <img
+                                *ngIf="product.manufacturer_name === 'Stiebel Eltron'"
+                                nz-image
+                                src="/assets/img3.png"
+                                alt=""
+                                width="120px"
+                                height="300px"
+                            />
+                        </nz-col>
+                        <nz-col nzSpan="12">
+                            <p *ngFor="let point of product.detail_highlight; let i = index"><b>{{i+1}}. </b>  {{point}}</p>
+                        </nz-col>
+                    </nz-row>
+                    <nz-divider></nz-divider>
+                    <nz-row>
+                        <nz-col nzSpan="24">
+                            <p><b>Base Price</b> &nbsp; -------------------------------- &nbsp; <b>${{product.base_price}}</b></p>
+                            <p><small>(Installation not included)</small></p>
+                            <p>Available Incentives &nbsp;
+                                <img
+                                    nz-image
+                                    src="/assets/info-tooltip.svg"
+                                    alt=""
+                                /> &nbsp; ---------------- &nbsp; -${{product.incentives.totalAppliedIncentives}}
+                            </p>
+                            <p><b>Equipment Cost</b> &nbsp;
+                                <img
+                                    nz-image
+                                    src="/assets/info-tooltip.svg"
+                                    alt=""
+                                /> &nbsp; -------------------- &nbsp; <span style="color: #F5A54C;">$499</span>
+                            </p>
+                            <p style="border: 2px solid #00664F;"><b>Your Est. Annual Savings is ${{product.est_annual_savings_cal}}</b> &nbsp;
+                                <img
+                                    nz-image
+                                    src="/assets/info-tooltip.svg"
+                                    alt=""
+                                />
+                            </p>
+                            <button class="quoteBtn" nz-button nzBlock>Get Install Quote</button>
+                        </nz-col>
+                    </nz-row><br>
+                    <nz-row>
+                        <button nz-button (click)="showModal(product)" nzType="dashed" nzBlock style="background-color: #EEEEEE; color: blue;">View More Details</button>
+                    </nz-row>
+                </nz-card>
+            </div>
+            <div nz-col *ngIf="selectedProducts && selectedProducts.length === 0">
+                <h1 style="color: #DD2200;">There is no products with this volume size.</h1>
+            </div>
+        </div>
+        <div class="moreData">
+            <nz-row>
+                <nz-col>
+                    <button class="seeMoreBtn" nz-button nzType="default" nzBlock>See More Options</button>
+                </nz-col>
+            </nz-row><br>
+            <nz-row>
+                <p style="color: #656565;"><b>The Heat Pump Water Heater Advantage</b></p>
+            </nz-row><br>
+            <nz-row>
+                <nz-col nzSpan="8">
+                    <p style="color: #00664F;"><b>Clean and Healthy Air</b> &nbsp;
+                        <img
+                            nz-image
+                            src="/assets/info-tooltip.svg"
+                            alt=""
+                        />
+                    </p>
+                    <p>No in-home air pollution or greenhouse gas emissions</p>
+                </nz-col>
+                <nz-col nzSpan="7">
+                    <p style="color: #00664F;"><b>Reduced Carbon Footprint</b> &nbsp;
+                        <img
+                            nz-image
+                            src="/assets/info-tooltip.svg"
+                            alt=""
+                        />
+                    </p>
+                    <p>Carbon offset equivalent for your home equals <b style="color: #F5A54C;">23 trees planted</b></p>
+                </nz-col>
+                <nz-col nzSpan="8">
+                    <p style="color: #00664F;"><b>Lower Energy Bills</b> &nbsp;
+                        <img
+                            nz-image
+                            src="/assets/info-tooltip.svg"
+                            alt=""
+                        />
+                    </p>
+                    <p>Up to 75% reduction in energy use</p>
+                </nz-col>
+            </nz-row>
+            <nz-divider></nz-divider>
+            <nz-row>
+                <p style="color: #656565;"><b>How Hybrid Electric Water Heaters Work</b></p>
+            </nz-row>
+            <nz-row>
+                <nz-card style="width: 90%;">
+                    <nz-tabset>
+                        <nz-tab nzTitle="Process">
+                          <p>A hybrid electric water heater uses a compressor to take heat from the surrounding air and transfers it inside the water tank.
+                              It works similarly to refrigirator, but in reverse. The "hybrid" component means that the water heater can heat water either
+                              via the heat pump, or, when the surrounding air is too cold, it can heat the same as conventional electric water heater.
+                              This means your water heating is as efficient as possible, and also ensures you have hot water in all environments.
+                          </p>
+                          <img
+                            nz-image
+                            src="/assets/hpwh-process-tab.png"
+                            width="100%"
+                          >
+                        </nz-tab>
+                        <nz-tab nzTitle="Components">
+                          Here is about components in water heaters.
+                        </nz-tab>
+                    </nz-tabset>
+                </nz-card>
+            </nz-row>
+        </div>
+    </div>
+    <!-- Slider on left side -->
+    <div class="left-side" nz-col [nzSpan]="6" [nzPull]="18">
+        <nz-card style="width:330px; margin-left: 7%; margin-top: 40%;">
+            <h3>Tell Us About Your Project</h3>
+            <nz-divider></nz-divider>
+            <h4>Size your water heater
+                <img
+                    nz-image
+                    src="/assets/info-tooltip.svg"
+                    alt=""
+                />
+            </h4>
+            <nz-row>
+                <nz-col nzSpan="22">
+                  <nz-slider [nzMin]="30" [nzMax]="80" [(ngModel)]="sizeValue" (nzOnAfterChange)="onAfterChange($event)"></nz-slider>
+                </nz-col>
+                <nz-col nzSpan="2">
+                    <p>{{sizeValue}}</p>
+                </nz-col>
+            </nz-row>
+        </nz-card>
+    </div>
+</div>
+<!-- Displaying modal after user clicks on view more details -->
+<div *ngIf="modalVisible">
+    <nz-modal [(nzVisible)]="modalVisible" nzWidth="1300px" nzTitle="{{singleProductData.manufacturer_name}}" (nzOnCancel)="cancelModal()" (nzOnOk)="okClicked()">
+        <ng-container *nzModalContent>
+          <div>
+              <nz-row>
+                  <nz-col nzSpan="8" style="text-align: center;">
+                    <img
+                        *ngIf="singleProductData.manufacturer_name === 'Rheem'"
+                        nz-image
+                        src="/assets/img1.png"
+                        alt=""
+                        width="150px"
+                        height="300px"
+                    />
+                    <img
+                        *ngIf="singleProductData.manufacturer_name === 'A.O. Smith'"
+                        nz-image
+                        src="/assets/img2.png"
+                        alt=""
+                        width="150px"
+                        height="300px"
+                    />
+                    <img
+                        *ngIf="singleProductData.manufacturer_name === 'Stiebel Eltron'"
+                        nz-image
+                        src="/assets/img3.png"
+                        alt=""
+                        width="150px"
+                        height="300px"
+                    />
+                  </nz-col>
+                  <nz-col nzSpan="14">
+                      <h2><b>{{singleProductData.manufacturer_name}}</b></h2>
+                      <h4><b>{{singleProductData.name}}</b></h4>
+                      <nz-divider></nz-divider>
+                      <h4 *ngFor="let highlight of singleProductData.est_highlight; let i = index"><b>{{i+1}}.  </b>{{highlight}}</h4>
+                      <nz-row>
+                          <nz-col>
+                            <h1>
+                                <del class="prevprice">
+                                    $1,799
+                                </del>
+                            </h1>
+                          </nz-col>&nbsp;
+                          <nz-col>
+                            <nz-divider nzType='vertical'></nz-divider>
+                          </nz-col>&nbsp;
+                          <nz-col>
+                            <h1 class="finalprice">${{singleProductData.base_price}}</h1>
+                          </nz-col>
+                      </nz-row>
+                      <nz-row>
+                          <nz-col>
+                            <button class="quoteBtn" nz-button nzBlock>Get Install Quote</button>
+                          </nz-col>
+                          <nz-col>
+                            <button style="color: blue;" nz-button nzType="text" nzBlock (click)="okClicked()">Back to Results</button>
+                          </nz-col>
+                      </nz-row>
+                  </nz-col>
+                  <nz-col nzSpan="2" style="text-align: center;">
+                    <button class="nextPrev" (click)="prevProduct()">Prev</button>&nbsp;
+                    <button class="nextPrev" (click)="nextProduct()">Next</button><br>
+                    <img
+                        nz-image
+                        src="/assets/Energy_Star_logo.svg.png"
+                        alt=""
+                        width="50px"
+                        height="50px"
+                    />
+                    <p>3.4 ef
+                        <img
+                            nz-image
+                            src="/assets/info-tooltip.svg"
+                            alt=""
+                        />
+                    </p>
+                  </nz-col>
+              </nz-row>
+          </div><br>
+          <div>
+            <nz-row>
+                <nz-card style="width: 100%;">
+                    <nz-tabset>
+                        <nz-tab nzTitle="Product Overview">
+                            <p>Accelera heat pump water heaters save up to 80% of hot water costs because they extract heat to make
+                                hot water from energy in the air. The heat pump draws less energy than a toaster while it is running
+                                and making hot water. In warm climates, Accelera can be placed in garage, where it uses the heat from
+                                the outside air; or inside the house, where it helps with air conditioning.
+                            </p>
+                          <nz-row>
+                              <nz-col nzSpan="9" style="padding:2%">
+                                  <div *ngFor="let eachBullet of singleProductData.product_bullet_block; let i = index">
+                                    <div *ngIf="i < 5" class="bulletsBlock">
+                                        <nz-row class="bulletHeadingBlock">
+                                            <nz-col>
+                                                <img
+                                                    nz-image
+                                                    src="/assets/right-check.svg"
+                                                    alt=""
+                                                />
+                                            </nz-col>
+                                            <nz-col>
+                                                <h4 class="bulletHeadingText"><b>{{eachBullet.product_bullet}}</b></h4>
+                                            </nz-col>
+                                        </nz-row>
+                                        <nz-row>
+                                            <p>{{eachBullet.product_block}}</p>
+                                        </nz-row>
+                                    </div><br>
+                                  </div>
+                              </nz-col>
+                              <nz-col nzSpan="9" style="padding:2%">
+                                    <div *ngFor="let eachBullet of singleProductData.product_bullet_block; let i = index">
+                                        <div *ngIf="i > 4" class="bulletsBlock">
+                                            <nz-row class="bulletHeadingBlock">
+                                                <nz-col>
+                                                    <img
+                                                        nz-image
+                                                        src="/assets/right-check.svg"
+                                                        alt=""
+                                                    />
+                                                </nz-col>
+                                                <nz-col>
+                                                    <h4 class="bulletHeadingText"><b>{{eachBullet.product_bullet}}</b></h4>
+                                                </nz-col>
+                                            </nz-row>
+                                            <nz-row>
+                                                <p>{{eachBullet.product_block}}</p>
+                                            </nz-row>
+                                        </div><br>
+                                    </div>
+                                </nz-col>
+                                <nz-col nzSpan="6" style="padding:1%">
+                                    <nz-row>
+                                        <nz-col nzSpan="24">
+                                            <p><b>Base Price</b> &nbsp; ---------------------------- &nbsp; <b>${{singleProductData.base_price}}</b></p>
+                                            <p><small>(Installation not included)</small></p>
+                                            <p>Federal Tax Credit &nbsp;
+                                                <img
+                                                    nz-image
+                                                    src="/assets/info-tooltip.svg"
+                                                    alt=""
+                                                /> &nbsp; ------------ &nbsp; -$200
+                                            </p>
+                                            <p>Federal Tax Credit &nbsp;
+                                                <img
+                                                    nz-image
+                                                    src="/assets/info-tooltip.svg"
+                                                    alt=""
+                                                /> &nbsp; ------------ &nbsp; -$100
+                                            </p>
+                                            <p>Utility Incentives &nbsp;
+                                                <img
+                                                    nz-image
+                                                    src="/assets/info-tooltip.svg"
+                                                    alt=""
+                                                /> &nbsp; --------------- &nbsp; -${{singleProductData.incentives.totalAppliedIncentives}}
+                                            </p>
+                                            <p><b>Equipment Cost</b> &nbsp;
+                                                <img
+                                                    nz-image
+                                                    src="/assets/info-tooltip.svg"
+                                                    alt=""
+                                                /> &nbsp; -------------- &nbsp; <span style="color: #F5A54C;">$499</span>
+                                            </p>
+                                            <p style="border: 2px solid #00664F;"><b>Your Est. Annual Savings is ${{singleProductData.est_annual_savings_cal}}</b> &nbsp;
+                                                <img
+                                                    nz-image
+                                                    src="/assets/info-tooltip.svg"
+                                                    alt=""
+                                                />
+                                            </p>
+                                        </nz-col>
+                                    </nz-row><br>
+                                </nz-col>
+                            </nz-row>
+                        </nz-tab>
+                        <nz-tab nzTitle="Product Specs">
+                          Here is about product specifications.
+                        </nz-tab>
+                    </nz-tabset>
+                </nz-card>
+            </nz-row>
+          </div>
+        </ng-container>
+    </nz-modal>
+</div>
